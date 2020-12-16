@@ -9,7 +9,8 @@
 }
 
 $bright-blue: hsl(220, 98%, 61%);
-$check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+$check-background-light: hsl(192, 100%, 67%);
+$check-background-dark: hsl(280, 87%, 65%);
 
 /// Light Theme
 
@@ -34,6 +35,7 @@ body {
     background-position: center top;
     background-repeat: no-repeat;
     background-color: #fff;
+    max-width: 1440px;
 
     .pageContainer {
 
@@ -61,45 +63,51 @@ body {
             }
         }
 
-        main {
-            .todoContainer {
-                margin-top: 40px;
+
+        .todoContainer {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            header {
                 display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-
-                header {
-                    display: flex;
-                    justify-content: left;
-                    background-color: $very-light-gray;
-                    height: 64px;
-                    border-radius: 5px;
-                    margin-bottom: 24px;
+                justify-content: left;
+                background-color: $very-light-gray;
+                height: 64px;
+                border-radius: 5px;
+                margin-bottom: 24px;
 
 
-                    button.check {
-                        //background-image: url("./images/icon-check.svg");
-                        background-position: center center;
-                        background-repeat: no-repeat;
-                        background-color: rgba(0, 0, 0, 0);
-                        width: 24px;
-                        height: 24px;
-                        border: 1px solid $very-light-grayish-blue;
-                        border-radius: 50%;
-                        margin: 20px 24px;
-                    }
-
-                    input {
-                        background-color: $very-light-gray;
-                        border-style: none;
-                        color: $light-grayish-blue;
-                    }
+                button.check {
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    background-color: rgba(0, 0, 0, 0);
+                    width: 24px;
+                    height: 24px;
+                    border: 1px solid $very-light-grayish-blue;
+                    border-radius: 50%;
+                    margin: 20px 24px;
                 }
 
-                ul {
-                    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+  
+                input {
                     background-color: $very-light-gray;
+                    border-style: none;
+                    color: $light-grayish-blue;
+                }
+            }
+
+            main {
+
+                box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+
+                ul {
                     border-radius: 5px;
+
+                    background-color: $very-light-gray;
+
 
                     li {
                         height: 64px;
@@ -108,13 +116,10 @@ body {
                         position: relative;
 
                         button.check {
-                            //background-image: url("./images/icon-check.svg");
-                            background-position: center center;
-                            background-repeat: no-repeat;
-                            background-color: rgba(0, 0, 0, 0);
                             width: 24px;
                             height: 24px;
                             border: 1px solid $very-light-grayish-blue;
+                            background-color: rgba(0, 0, 0, 0);
                             border-radius: 50%;
                             margin: 20px 24px;
                         }
@@ -122,46 +127,101 @@ body {
                         .listText {
                             position: absolute;
                             top: 24px;
-
                             color: $very-dark-grayish-blue;
+                            font-weight: 400;
+                        }
+
+                    }
+
+                    li.complete {
+                        button.on {
+                            position: relative;
+                            background: linear-gradient($check-background-light, $check-background-dark);
+
+                            .icon-check {
+                                position: absolute;
+                                top: -1px;
+                                width: 24px;
+                                height: 24px;
+                                background-image: url("./images/icon-check.svg");
+                                background-position: center center;
+                                background-repeat: no-repeat;
+                            }
+                        }
+
+                        .listText {
+                            text-decoration: line-through;
+                            color: $light-grayish-blue;
                         }
                     }
                 }
 
                 footer {
-                    background-color: #fff;
+                    height: 50px;
+                    background-color: $very-light-gray;
                     display: flex;
                     justify-content: space-between;
+                    padding: 18px;
+                    border-bottom-left-radius: 5px;
+                    border-bottom-right-radius: 5px;
 
                     .itemsLeft {
-                        font-size: 12px;
+                        color: $dark-grayish-blue;
+                        font-weight: 400;
+                        font-size: 14px;
                     }
 
-                    .filter,
-                    .clearCompleted {
-
+                    .filter {
                         button.text {
-                            font-size: 12px;
+                            padding: 0 4px;
+                            color: $dark-grayish-blue;
+                            font-size: 14px;
+                            font-weight: 700;
                             background-color: rgba(0, 0, 0, 0);
                             border-style: none;
                         }
+                        button.active {
+                            color: $bright-blue;
+                        }
+                    }
+
+                    .clearCompleted {
+                        button.text {
+                            color: $dark-grayish-blue;
+                            font-size: 14px;
+                            background-color: rgba(0, 0, 0, 0);
+                            border-style: none;
+                        }
+                        button.active {
+                            color: $bright-blue;
+                        }
+
+                        
                     }
                 }
+
             }
         }
 
-        footer {
+
+        .instruction {
+            padding-top: 64px;
+            text-align: center;
             font-size: 12px;
+            font-weight: 700;
+            color: $dark-grayish-blue;
+            
         }
 
 
     }
 
     .attribution {
-        font-size: 11px;
+        font-size: 12px;
         text-align: center;
 
         a {
+            font-size: 12px;
             color: hsl(228, 45%, 44%);
         }
     }

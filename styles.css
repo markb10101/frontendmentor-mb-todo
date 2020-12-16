@@ -12,6 +12,7 @@ body {
   background-position: center top;
   background-repeat: no-repeat;
   background-color: #fff;
+  max-width: 1440px;
 }
 body .pageContainer {
   width: 540px;
@@ -35,13 +36,13 @@ body .pageContainer header button.icon-mode {
   color: #fafafa;
   border: none;
 }
-body .pageContainer main .todoContainer {
+body .pageContainer .todoContainer {
   margin-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-body .pageContainer main .todoContainer header {
+body .pageContainer .todoContainer header {
   display: flex;
   justify-content: left;
   background-color: #fafafa;
@@ -49,7 +50,7 @@ body .pageContainer main .todoContainer header {
   border-radius: 5px;
   margin-bottom: 24px;
 }
-body .pageContainer main .todoContainer header button.check {
+body .pageContainer .todoContainer header button.check {
   background-position: center center;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0);
@@ -59,58 +60,102 @@ body .pageContainer main .todoContainer header button.check {
   border-radius: 50%;
   margin: 20px 24px;
 }
-body .pageContainer main .todoContainer header input {
+body .pageContainer .todoContainer header input {
   background-color: #fafafa;
   border-style: none;
   color: #e4e5f1;
 }
-body .pageContainer main .todoContainer ul {
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
-  background-color: #fafafa;
+body .pageContainer .todoContainer main {
+  box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
-body .pageContainer main .todoContainer ul li {
+body .pageContainer .todoContainer main ul {
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+body .pageContainer .todoContainer main ul li {
   height: 64px;
   border-bottom: 1.5px solid #e4e5f1;
   list-style: none;
   position: relative;
 }
-body .pageContainer main .todoContainer ul li button.check {
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-color: rgba(0, 0, 0, 0);
+body .pageContainer .todoContainer main ul li button.check {
   width: 24px;
   height: 24px;
   border: 1px solid #e4e5f1;
+  background-color: rgba(0, 0, 0, 0);
   border-radius: 50%;
   margin: 20px 24px;
 }
-body .pageContainer main .todoContainer ul li .listText {
+body .pageContainer .todoContainer main ul li .listText {
   position: absolute;
   top: 24px;
   color: #393a4c;
+  font-weight: 400;
 }
-body .pageContainer main .todoContainer footer {
-  background-color: #fff;
+body .pageContainer .todoContainer main ul li.complete button.on {
+  position: relative;
+  background: linear-gradient(#57ddff, #c058f3);
+}
+body .pageContainer .todoContainer main ul li.complete button.on .icon-check {
+  position: absolute;
+  top: -1px;
+  width: 24px;
+  height: 24px;
+  background-image: url("./images/icon-check.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+body .pageContainer .todoContainer main ul li.complete .listText {
+  text-decoration: line-through;
+  color: #e4e5f1;
+}
+body .pageContainer .todoContainer main footer {
+  height: 50px;
+  background-color: #fafafa;
   display: flex;
   justify-content: space-between;
+  padding: 18px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
-body .pageContainer main .todoContainer footer .itemsLeft {
-  font-size: 12px;
+body .pageContainer .todoContainer main footer .itemsLeft {
+  color: #777a92;
+  font-weight: 400;
+  font-size: 14px;
 }
-body .pageContainer main .todoContainer footer .filter button.text,
-body .pageContainer main .todoContainer footer .clearCompleted button.text {
-  font-size: 12px;
+body .pageContainer .todoContainer main footer .filter button.text {
+  padding: 0 4px;
+  color: #777a92;
+  font-size: 14px;
+  font-weight: 700;
   background-color: rgba(0, 0, 0, 0);
   border-style: none;
 }
-body .pageContainer footer {
+body .pageContainer .todoContainer main footer .filter button.active {
+  color: #3a7bfd;
+}
+body .pageContainer .todoContainer main footer .clearCompleted button.text {
+  color: #777a92;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0);
+  border-style: none;
+}
+body .pageContainer .todoContainer main footer .clearCompleted button.active {
+  color: #3a7bfd;
+}
+body .pageContainer .instruction {
+  padding-top: 64px;
+  text-align: center;
   font-size: 12px;
+  font-weight: 700;
+  color: #777a92;
 }
 body .attribution {
-  font-size: 11px;
+  font-size: 12px;
   text-align: center;
 }
 body .attribution a {
+  font-size: 12px;
   color: #3e52a3;
 }
