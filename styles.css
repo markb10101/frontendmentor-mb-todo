@@ -25,13 +25,14 @@ body .pageContainer header {
 }
 body .pageContainer header h1 {
   font-size: 40px;
-  color: #fff;
+  color: #fafafa;
 }
 body .pageContainer header button.icon-mode {
   background-image: url("./images/icon-moon.svg");
   width: 26px;
   height: 26px;
   background-color: rgba(0, 0, 0, 0);
+  color: #fafafa;
   border: none;
 }
 body .pageContainer main .todoContainer {
@@ -46,8 +47,7 @@ body .pageContainer main .todoContainer header {
   background-color: #fafafa;
   height: 64px;
   border-radius: 5px;
-  padding: 18px;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 body .pageContainer main .todoContainer header button.check {
   background-position: center center;
@@ -57,23 +57,38 @@ body .pageContainer main .todoContainer header button.check {
   height: 24px;
   border: 1px solid #e4e5f1;
   border-radius: 50%;
+  margin: 20px 24px;
 }
 body .pageContainer main .todoContainer header input {
+  background-color: #fafafa;
   border-style: none;
-  margin-left: 20px;
   color: #e4e5f1;
 }
 body .pageContainer main .todoContainer ul {
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
-  background-color: #fff;
+  background-color: #fafafa;
   border-radius: 5px;
 }
 body .pageContainer main .todoContainer ul li {
-  border-top: 1px #666;
-  border-bottom: 1px #666;
-  padding: 4px;
-  margin-left: 32px;
+  height: 64px;
+  border-bottom: 1.5px solid #e4e5f1;
   list-style: none;
+  position: relative;
+}
+body .pageContainer main .todoContainer ul li button.check {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: rgba(0, 0, 0, 0);
+  width: 24px;
+  height: 24px;
+  border: 1px solid #e4e5f1;
+  border-radius: 50%;
+  margin: 20px 24px;
+}
+body .pageContainer main .todoContainer ul li .listText {
+  position: absolute;
+  top: 24px;
+  color: #393a4c;
 }
 body .pageContainer main .todoContainer footer {
   background-color: #fff;

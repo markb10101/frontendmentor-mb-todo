@@ -8,7 +8,7 @@
     font-size: 18px
 }
 
-$bright-blue: hsl(220,98%,61%);
+$bright-blue: hsl(220, 98%, 61%);
 $check-background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
 /// Light Theme
@@ -48,7 +48,7 @@ body {
 
             h1 {
                 font-size: 40px;
-                color: #fff;
+                color: $very-light-gray;
             }
 
             button.icon-mode {
@@ -56,6 +56,7 @@ body {
                 width: 26px;
                 height: 26px;
                 background-color: rgba(0, 0, 0, 0);
+                color: $very-light-gray;
                 border: none;
             }
         }
@@ -66,44 +67,64 @@ body {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                
+
                 header {
                     display: flex;
                     justify-content: left;
                     background-color: $very-light-gray;
                     height: 64px;
                     border-radius: 5px;
-                    padding: 18px;
-                    margin-bottom: 12px;
+                    margin-bottom: 24px;
+
 
                     button.check {
                         //background-image: url("./images/icon-check.svg");
                         background-position: center center;
                         background-repeat: no-repeat;
-                        background-color: rgba(0,0,0,0);
+                        background-color: rgba(0, 0, 0, 0);
                         width: 24px;
                         height: 24px;
                         border: 1px solid $very-light-grayish-blue;
                         border-radius: 50%;
+                        margin: 20px 24px;
                     }
 
                     input {
+                        background-color: $very-light-gray;
                         border-style: none;
-                        margin-left: 20px;
                         color: $light-grayish-blue;
                     }
                 }
 
                 ul {
-                    box-shadow: 2px 4px 8px rgba(0,0,0,0.5);
-                    background-color: #fff;
+                    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+                    background-color: $very-light-gray;
                     border-radius: 5px;
+
                     li {
-                        border-top: 1px #666;
-                        border-bottom: 1px #666;
-                        padding: 4px;
-                        margin-left: 32px;
+                        height: 64px;
+                        border-bottom: 1.5px solid $light-grayish-blue;
                         list-style: none;
+                        position: relative;
+
+                        button.check {
+                            //background-image: url("./images/icon-check.svg");
+                            background-position: center center;
+                            background-repeat: no-repeat;
+                            background-color: rgba(0, 0, 0, 0);
+                            width: 24px;
+                            height: 24px;
+                            border: 1px solid $very-light-grayish-blue;
+                            border-radius: 50%;
+                            margin: 20px 24px;
+                        }
+
+                        .listText {
+                            position: absolute;
+                            top: 24px;
+
+                            color: $very-dark-grayish-blue;
+                        }
                     }
                 }
 
@@ -111,16 +132,17 @@ body {
                     background-color: #fff;
                     display: flex;
                     justify-content: space-between;
+
                     .itemsLeft {
                         font-size: 12px;
                     }
 
                     .filter,
                     .clearCompleted {
-                        
-                        button.text{
+
+                        button.text {
                             font-size: 12px;
-                            background-color: rgba(0,0,0,0);
+                            background-color: rgba(0, 0, 0, 0);
                             border-style: none;
                         }
                     }
