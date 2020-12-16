@@ -65,6 +65,11 @@ body .pageContainer .todoContainer header input {
   border-style: none;
   color: #e4e5f1;
 }
+body .pageContainer .todoContainer header input:focus {
+  outline: none;
+  border-style: none;
+  color: #777a92;
+}
 body .pageContainer .todoContainer main {
   box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -87,6 +92,9 @@ body .pageContainer .todoContainer main ul li button.check {
   border-radius: 50%;
   margin: 20px 24px;
 }
+body .pageContainer .todoContainer main ul li button.check:hover {
+  cursor: pointer;
+}
 body .pageContainer .todoContainer main ul li .listText {
   position: absolute;
   top: 24px;
@@ -105,6 +113,9 @@ body .pageContainer .todoContainer main ul li.complete button.on .icon-check {
   background-image: url("./images/icon-check.svg");
   background-position: center center;
   background-repeat: no-repeat;
+}
+body .pageContainer .todoContainer main ul li.complete button.on:hover {
+  cursor: pointer;
 }
 body .pageContainer .todoContainer main ul li.complete .listText {
   text-decoration: line-through;
@@ -132,6 +143,9 @@ body .pageContainer .todoContainer main footer .filter button.text {
   background-color: rgba(0, 0, 0, 0);
   border-style: none;
 }
+body .pageContainer .todoContainer main footer .filter button.text:hover {
+  cursor: pointer;
+}
 body .pageContainer .todoContainer main footer .filter button.active {
   color: #3a7bfd;
 }
@@ -141,7 +155,10 @@ body .pageContainer .todoContainer main footer .clearCompleted button.text {
   background-color: rgba(0, 0, 0, 0);
   border-style: none;
 }
-body .pageContainer .todoContainer main footer .clearCompleted button.active {
+body .pageContainer .todoContainer main footer .clearCompleted button.text:hover {
+  cursor: pointer;
+}
+body .pageContainer .todoContainer main footer .clearCompleted button.on {
   color: #3a7bfd;
 }
 body .pageContainer .instruction {

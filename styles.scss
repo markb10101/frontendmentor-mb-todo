@@ -95,6 +95,14 @@ body {
                     background-color: $very-light-gray;
                     border-style: none;
                     color: $light-grayish-blue;
+
+                    &:focus {
+                        outline: none;
+                        border-style: none;
+                        color: $dark-grayish-blue;                        
+                    }
+
+                    // placeholder!?
                 }
             }
 
@@ -122,6 +130,9 @@ body {
                             background-color: rgba(0, 0, 0, 0);
                             border-radius: 50%;
                             margin: 20px 24px;
+                            &:hover {
+                                cursor: pointer;
+                            }
                         }
 
                         .listText {
@@ -146,6 +157,10 @@ body {
                                 background-image: url("./images/icon-check.svg");
                                 background-position: center center;
                                 background-repeat: no-repeat;
+                            }
+
+                            &:hover {
+                                cursor: pointer;
                             }
                         }
 
@@ -179,6 +194,9 @@ body {
                             font-weight: 700;
                             background-color: rgba(0, 0, 0, 0);
                             border-style: none;
+                            &:hover {
+                                cursor: pointer;
+                            }
                         }
                         button.active {
                             color: $bright-blue;
@@ -191,8 +209,11 @@ body {
                             font-size: 14px;
                             background-color: rgba(0, 0, 0, 0);
                             border-style: none;
+                            &:hover {
+                                cursor: pointer;
+                            }
                         }
-                        button.active {
+                        button.on {
                             color: $bright-blue;
                         }
 
