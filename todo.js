@@ -64,6 +64,7 @@ const renderToDoList = (type) => {
         }
     });
     todoListEl.innerHTML = todoListHTML;
+    renderTasksLeftTodo();
 }
 
 
@@ -133,8 +134,5 @@ handleClickFilterCompleted();
 handleClickClearCompleted();
 
 filterToDoList(activeFilter);
-renderTasksLeftTodo();
 
 
-
-// handleClickClearCompleted
