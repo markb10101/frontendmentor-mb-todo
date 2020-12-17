@@ -7,6 +7,10 @@
   font-size: 18px;
 }
 
+button:focus {
+  outline: 0;
+}
+
 body {
   background-image: url("./images/bg-desktop-light.jpg");
   background-position: center top;
@@ -149,7 +153,7 @@ body .pageContainer .todoContainer main footer .filter button.text {
 body .pageContainer .todoContainer main footer .filter button.text:hover {
   cursor: pointer;
 }
-body .pageContainer .todoContainer main footer .filter button.active {
+body .pageContainer .todoContainer main footer .filter button.on {
   color: #3a7bfd;
 }
 body .pageContainer .todoContainer main footer .clearCompleted button.text {

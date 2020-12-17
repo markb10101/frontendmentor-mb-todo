@@ -26,7 +26,7 @@ let todoListArr = [
     },
 ];
 
-let activeFilter = 'All';
+
 
 // render notice for how many tasks are left to do
 const renderTasksLeftTodo = () => {
@@ -35,18 +35,27 @@ const renderTasksLeftTodo = () => {
     itemsLeftEl.innerHTML = `${numOfTasksLeft} items left`;
 }
 
+const finishedTask = (index) => {
+    console.log('finished '+todoListArr[index]);
+    todoListArr[index].isActive = false;
+    filterToDoList(activeFilter);
+}
+
+const unfinishedTask = (index) => {
+    todoListArr[index].isActive = true;
+    filterToDoList(activeFilter);
+}
+
 const renderToDoList = (listArr) => {
 
-    // get a reference to the ul element where the list will be rendered
-    const todoListEl = document.querySelector('.todo');
-
+    console.log('rendering');
     let todoListHTML = "";
 
-    listArr.forEach((task) => {
+    listArr.forEach((task,index) => {
         if (task.isActive) {
-            todoListHTML += `<li><button class="check"></button>`;
+            todoListHTML += `<li><button class="check" onclick="finishedTask(${index})"></button>`;
         } else {
-            todoListHTML += `<li class="complete"><button class="check on">
+            todoListHTML += `<li class="complete"><button class="check on" onclick="unfinishedTask(${index})">
                              <div class="icon-check"></div></button>`;
         }
         todoListHTML += `<span class="listText">${task.description}</span></li>`
@@ -55,28 +64,33 @@ const renderToDoList = (listArr) => {
 }
 
 
-
-// render the list
 const filterToDoList = (type) => {
 
     let displayListArr = [];
 
-    if (type === 'All') {
-        displayListArr = [...todoListArr];
-    }
-    if (type === 'Active') {
-        displayListArr = [...todoListArr].filter((task)=>task.isActive);
-    }
-    if (type==='Completed') {
-        displayListArr =  [...todoListArr].filter((task)=>!task.isActive);
+    if (filterAllEl.classList.contains('on')) filterAllEl.classList.remove('on');
+    if (filterActiveEl.classList.contains('on')) filterActiveEl.classList.remove('on');
+    if (filterCompletedEl.classList.contains('on')) filterCompletedEl.classList.remove('on');
+
+    switch (type) {
+        case 'All':
+            displayListArr = [...todoListArr];
+            filterAllEl.classList.add('on');
+            break;
+        case 'Active':
+            displayListArr = [...todoListArr].filter((task) => task.isActive);
+            filterActiveEl.classList.add('on');
+            break;
+        case 'Completed':
+            displayListArr = [...todoListArr].filter((task) => !task.isActive);
+            filterCompletedEl.classList.add('on');
+            break;
     }
 
     renderToDoList(displayListArr);
 }
 
 const handleClickFilterAll = () => {
-    // get reference to 'All' button element
-    const filterAllEl = document.querySelector('.all');
     filterAllEl.addEventListener('click', () => {
         activeFilter = 'All';
         filterToDoList(activeFilter);
@@ -84,8 +98,6 @@ const handleClickFilterAll = () => {
 }
 
 const handleClickFilterActive = () => {
-    // get reference to 'Active' button element
-    const filterActiveEl = document.querySelector('.active');
     filterActiveEl.addEventListener('click', () => {
         activeFilter = 'Active';
         filterToDoList(activeFilter);
@@ -93,8 +105,6 @@ const handleClickFilterActive = () => {
 }
 
 const handleClickFilterCompleted = () => {
-    // get reference to 'Completed' button element
-    const filterCompletedEl = document.querySelector('.completed');
     filterCompletedEl.addEventListener('click', () => {
         activeFilter = 'Completed';
         filterToDoList(activeFilter);
@@ -102,13 +112,20 @@ const handleClickFilterCompleted = () => {
 }
 
 const handleClickClearCompleted = () => {
-    const clearCompletedEl = document.querySelector('.clear');
     clearCompletedEl.addEventListener('click', () => {
-        const cleanedListArr = [...todoListArr].filter((task)=>task.isActive);
+        const cleanedListArr = [...todoListArr].filter((task) => task.isActive);
         todoListArr = cleanedListArr;
         filterToDoList(activeFilter);
     })
 }
+
+const todoListEl = document.querySelector('.todo');
+const filterAllEl = document.querySelector('.all');
+const filterActiveEl = document.querySelector('.active');
+const filterCompletedEl = document.querySelector('.completed');
+const clearCompletedEl = document.querySelector('.clear');
+
+let activeFilter = 'All';
 
 handleClickFilterAll();
 handleClickFilterActive();

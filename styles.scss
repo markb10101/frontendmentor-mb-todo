@@ -8,6 +8,12 @@
     font-size: 18px
 }
 
+button{
+    &:focus {
+        outline: 0;
+    }
+}
+
 $bright-blue: hsl(220, 98%, 61%);
 $check-background-light: hsl(192, 100%, 67%);
 $check-background-dark: hsl(280, 87%, 65%);
@@ -201,7 +207,7 @@ body {
                                 cursor: pointer;
                             }
                         }
-                        button.active {
+                        button.on {
                             color: $bright-blue;
                         }
                     }
