@@ -36,7 +36,7 @@ const renderTasksLeftTodo = () => {
 }
 
 const finishedTask = (index) => {
-    console.log('finished '+todoListArr[index]);
+    console.log('finished ' + todoListArr[index]);
     todoListArr[index].isActive = false;
     filterToDoList(activeFilter);
 }
@@ -46,19 +46,22 @@ const unfinishedTask = (index) => {
     filterToDoList(activeFilter);
 }
 
-const renderToDoList = (listArr) => {
+const renderToDoList = (type) => {
 
     console.log('rendering');
     let todoListHTML = "";
 
-    listArr.forEach((task,index) => {
-        if (task.isActive) {
-            todoListHTML += `<li><button class="check" onclick="finishedTask(${index})"></button>`;
+    todoListArr.forEach((task, index) => {
+        if (task.isActive && (type == 'All' || type == 'Active')) {
+            todoListHTML += `<li><button class="check" onclick="finishedTask(${index})"></button>
+                            <span class="listText">${task.description}</span></li>`;
         } else {
-            todoListHTML += `<li class="complete"><button class="check on" onclick="unfinishedTask(${index})">
-                             <div class="icon-check"></div></button>`;
+            if (!task.isActive && (type == 'All' || type == 'Completed')) {
+                todoListHTML += `<li class="complete"><button class="check on" onclick="unfinishedTask(${index})">
+                             <div class="icon-check"></div></button>
+                             <span class="listText">${task.description}</span></li>`;
+            }
         }
-        todoListHTML += `<span class="listText">${task.description}</span></li>`
     });
     todoListEl.innerHTML = todoListHTML;
 }
@@ -74,20 +77,16 @@ const filterToDoList = (type) => {
 
     switch (type) {
         case 'All':
-            displayListArr = [...todoListArr];
             filterAllEl.classList.add('on');
             break;
         case 'Active':
-            displayListArr = [...todoListArr].filter((task) => task.isActive);
             filterActiveEl.classList.add('on');
             break;
         case 'Completed':
-            displayListArr = [...todoListArr].filter((task) => !task.isActive);
             filterCompletedEl.classList.add('on');
             break;
     }
-
-    renderToDoList(displayListArr);
+    renderToDoList(type);
 }
 
 const handleClickFilterAll = () => {
