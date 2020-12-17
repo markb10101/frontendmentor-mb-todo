@@ -1,13 +1,5 @@
-{/* <li class="complete"><button class="check on"><div class="icon-check"></div></button><span class="listText">Jog around the park 3x</span></li>
-<li><button class="check"></button><span class="listText">Jog around the park 3x</span></li>
-<li><button class="check""></button><span class=" listText">Jog around the park 3x</span></li >
-<li><button class="check""></button><span class=" listText">Jog around the park 3x</span></li >
-<li><button class="check""></button><span class=" listText">Jog around the park 3x</span></li > */}
-
-
 // setup an array for storing the todo tasks
-
-const todoListArr = [
+let todoListArr = [
     {
         isActive: false,
         description: "Complete online JavaScript course",
@@ -17,7 +9,7 @@ const todoListArr = [
         description: "Jog around the park 3x",
     },
     {
-        isActive: true,
+        isActive: false,
         description: "10 minutes meditation",
     },
     {
@@ -34,40 +26,99 @@ const todoListArr = [
     },
 ];
 
+let activeFilter = 'All';
+
 // render notice for how many tasks are left to do
 const renderTasksLeftTodo = () => {
- const numOfTasksLeft = [...todoListArr.filter((task) => task.isActive === true)].length;
-   const itemsLeftEl = document.querySelector('.itemsLeft');
-   itemsLeftEl.innerHTML = `${numOfTasksLeft} items left`;
+    const numOfTasksLeft = [...todoListArr.filter((task) => task.isActive === true)].length;
+    const itemsLeftEl = document.querySelector('.itemsLeft');
+    itemsLeftEl.innerHTML = `${numOfTasksLeft} items left`;
 }
 
-// render the list
-const renderTodoList = () => {
+const renderToDoList = (listArr) => {
 
     // get a reference to the ul element where the list will be rendered
     const todoListEl = document.querySelector('.todo');
 
     let todoListHTML = "";
 
-    todoListArr.forEach((task) => {
-
+    listArr.forEach((task) => {
         if (task.isActive) {
             todoListHTML += `<li><button class="check"></button>`;
-           
         } else {
             todoListHTML += `<li class="complete"><button class="check on">
                              <div class="icon-check"></div></button>`;
         }
-
         todoListHTML += `<span class="listText">${task.description}</span></li>`
-
-
     });
-
-    todoListEl.innerHTML= todoListHTML;
-
-
+    todoListEl.innerHTML = todoListHTML;
 }
 
-renderTodoList();
+
+
+// render the list
+const filterToDoList = (type) => {
+
+    let displayListArr = [];
+
+    if (type === 'All') {
+        displayListArr = [...todoListArr];
+    }
+    if (type === 'Active') {
+        displayListArr = [...todoListArr].filter((task)=>task.isActive);
+    }
+    if (type==='Completed') {
+        displayListArr =  [...todoListArr].filter((task)=>!task.isActive);
+    }
+
+    renderToDoList(displayListArr);
+}
+
+const handleClickFilterAll = () => {
+    // get reference to 'All' button element
+    const filterAllEl = document.querySelector('.all');
+    filterAllEl.addEventListener('click', () => {
+        activeFilter = 'All';
+        filterToDoList(activeFilter);
+    });
+}
+
+const handleClickFilterActive = () => {
+    // get reference to 'Active' button element
+    const filterActiveEl = document.querySelector('.active');
+    filterActiveEl.addEventListener('click', () => {
+        activeFilter = 'Active';
+        filterToDoList(activeFilter);
+    });
+}
+
+const handleClickFilterCompleted = () => {
+    // get reference to 'Completed' button element
+    const filterCompletedEl = document.querySelector('.completed');
+    filterCompletedEl.addEventListener('click', () => {
+        activeFilter = 'Completed';
+        filterToDoList(activeFilter);
+    });
+}
+
+const handleClickClearCompleted = () => {
+    const clearCompletedEl = document.querySelector('.clear');
+    clearCompletedEl.addEventListener('click', () => {
+        const cleanedListArr = [...todoListArr].filter((task)=>task.isActive);
+        todoListArr = cleanedListArr;
+        filterToDoList(activeFilter);
+    })
+}
+
+handleClickFilterAll();
+handleClickFilterActive();
+handleClickFilterCompleted();
+
+handleClickClearCompleted();
+
+filterToDoList(activeFilter);
 renderTasksLeftTodo();
+
+
+
+// handleClickClearCompleted

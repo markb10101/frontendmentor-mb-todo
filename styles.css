@@ -36,6 +36,9 @@ body .pageContainer header button.icon-mode {
   color: #fafafa;
   border: none;
 }
+body .pageContainer header button.icon-mode:hover {
+  cursor: pointer;
+}
 body .pageContainer .todoContainer {
   margin-top: 40px;
   display: flex;
