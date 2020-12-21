@@ -1,18 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Josefin Sans', sans-serif;
-    font-size: 18px
-}
 
-button{
-    &:focus {
-        outline: 0;
-    }
-}
 
 $bright-blue: hsl(220, 98%, 61%);
 $check-background-light: hsl(192, 100%, 67%);
@@ -36,223 +24,273 @@ $dark-grayish-blue: hsl(234, 11%, 52%);
 $very-dark-grayish-blue: hsl(233, 14%, 35%);
 $very-dark-grayish-blue: hsl(237, 14%, 26%);
 
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 18px
+}
+
+button {
+    &:focus {
+        outline: 0;
+    }
+}
+
+
 body {
-    background-image: url("./images/bg-desktop-light.jpg");
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-color: #fff;
     max-width: 1440px;
-
+        height: 100%;
     .pageContainer {
-
-        width: 540px;
-        margin: 80px auto;
-        display: flex;
-        flex-direction: column;
-
-        header {
-            display: flex;
-            justify-content: space-between;
-
-            h1 {
-                font-size: 40px;
-                color: $very-light-gray;
-            }
-
-            button.icon-mode {
-                background-image: url("./images/icon-moon.svg");
-                width: 26px;
-                height: 26px;
-                background-color: rgba(0, 0, 0, 0);
-                color: $very-light-gray;
-                border: none;
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
-
+        border: 1px solid $bright-blue;
+        background-image: url("./images/bg-desktop-light.jpg");
+        background-position: center top;
+        background-repeat: no-repeat;
+        background-color: #fff;
+        
 
         .todoContainer {
-            margin-top: 40px;
+            width: 540px;
+            margin: 80px auto;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
 
             header {
                 display: flex;
-                justify-content: left;
-                background-color: $very-light-gray;
-                height: 64px;
-                border-radius: 5px;
-                margin-bottom: 24px;
+                justify-content: space-between;
 
-
-                button.check {
-                    background-position: center center;
-                    background-repeat: no-repeat;
-                    background-color: rgba(0, 0, 0, 0);
-                    width: 24px;
-                    height: 24px;
-                    border: 1px solid $very-light-grayish-blue;
-                    border-radius: 50%;
-                    margin: 20px 24px;
+                h1 {
+                    font-size: 40px;
+                    color: $very-light-gray;
                 }
 
-  
-                input {
-                    background-color: $very-light-gray;
-                    border-style: none;
-                    color: $light-grayish-blue;
-
-                    &:focus {
-                        outline: none;
-                        border-style: none;
-                        color: $dark-grayish-blue;                        
+                button {
+                    &:hover {
+                        cursor: pointer;
                     }
+                }
 
-                    // placeholder!?
+                button.color-scheme {
+                    width: 26px;
+                    height: 26px;
+                    background-color: rgba(0, 0, 0, 0);
+                    color: $very-light-gray;
+                    border: none;
+                }
+
+                button.night {
+                    background-image: url("./images/icon-moon.svg");
+                }
+
+                button.day {
+                    background-image: url("./images/icon-sun.svg");
                 }
             }
 
-            main {
 
-                box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.2);
-                border-radius: 5px;
+            .todoContainer {
+                margin-top: 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
 
-                ul {
-                    border-radius: 5px;
-
+                header {
+                    display: flex;
+                    justify-content: left;
                     background-color: $very-light-gray;
+                    height: 64px;
+                    border-radius: 5px;
+                    margin-bottom: 24px;
 
 
-                    li {
-                        height: 64px;
-                        border-bottom: 1.5px solid $light-grayish-blue;
-                        list-style: none;
+                    button.check {
+                        background-position: center center;
+                        background-repeat: no-repeat;
+                        background-color: rgba(0, 0, 0, 0);
+                        width: 24px;
+                        height: 24px;
+                        border: 1px solid $very-light-grayish-blue;
+                        border-radius: 50%;
+                        margin: 20px 24px;
+                    }
+
+                    button.on {
                         position: relative;
+                        background: linear-gradient($check-background-light, $check-background-dark);
 
-                        button.check {
+                        .icon-check {
+                            position: absolute;
+                            top: -1px;
                             width: 24px;
                             height: 24px;
-                            border: 1px solid $very-light-grayish-blue;
-                            background-color: rgba(0, 0, 0, 0);
-                            border-radius: 50%;
-                            margin: 20px 24px;
-                            &:hover {
-                                cursor: pointer;
-                            }
+                            background-image: url("./images/icon-check.svg");
+                            background-position: center center;
+                            background-repeat: no-repeat;
                         }
-
-                        .listText {
-                            position: absolute;
-                            top: 24px;
-                            color: $very-dark-grayish-blue;
-                            font-weight: 400;
-                        }
-
                     }
 
-                    li.complete {
-                        button.on {
-                            position: relative;
-                            background: linear-gradient($check-background-light, $check-background-dark);
 
-                            .icon-check {
-                                position: absolute;
-                                top: -1px;
+                    input {
+                        background-color: $very-light-gray;
+                        border-style: none;
+                        color: $light-grayish-blue;
+
+                        &:focus {
+                            outline: none;
+                            border-style: none;
+                            color: $dark-grayish-blue;
+                        }
+
+                        // placeholder!?
+                    }
+                }
+
+                main {
+
+                    box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.2);
+                    border-radius: 5px;
+
+                    ul {
+                        border-radius: 5px;
+
+                        background-color: $very-light-gray;
+
+
+                        li {
+                            height: 64px;
+                            border-bottom: 1.5px solid $light-grayish-blue;
+                            list-style: none;
+                            position: relative;
+
+                            button.check {
                                 width: 24px;
                                 height: 24px;
-                                background-image: url("./images/icon-check.svg");
-                                background-position: center center;
-                                background-repeat: no-repeat;
+                                border: 1px solid $very-light-grayish-blue;
+                                background-color: rgba(0, 0, 0, 0);
+                                border-radius: 50%;
+                                margin: 20px 24px;
+
+                                &:hover {
+                                    cursor: pointer;
+                                }
                             }
 
-                            &:hover {
-                                cursor: pointer;
+                            .listText {
+                                position: absolute;
+                                top: 24px;
+                                color: $very-dark-grayish-blue;
+                                font-weight: 400;
+                            }
+
+                        }
+
+                        li.complete {
+                            button.on {
+                                position: relative;
+                                background: linear-gradient($check-background-light, $check-background-dark);
+
+                                .icon-check {
+                                    position: absolute;
+                                    top: -1px;
+                                    width: 24px;
+                                    height: 24px;
+                                    background-image: url("./images/icon-check.svg");
+                                    background-position: center center;
+                                    background-repeat: no-repeat;
+                                }
+
+                                &:hover {
+                                    cursor: pointer;
+                                }
+                            }
+
+                            .listText {
+                                text-decoration: line-through;
+                                color: $light-grayish-blue;
                             }
                         }
-
-                        .listText {
-                            text-decoration: line-through;
-                            color: $light-grayish-blue;
-                        }
-                    }
-                }
-
-                footer {
-                    height: 50px;
-                    background-color: $very-light-gray;
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 18px;
-                    border-bottom-left-radius: 5px;
-                    border-bottom-right-radius: 5px;
-
-                    .itemsLeft {
-                        color: $dark-grayish-blue;
-                        font-weight: 400;
-                        font-size: 14px;
                     }
 
-                    .filter {
-                        button.text {
-                            padding: 0 4px;
+                    footer {
+                        height: 50px;
+                        background-color: $very-light-gray;
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 18px;
+                        border-bottom-left-radius: 5px;
+                        border-bottom-right-radius: 5px;
+
+                        .itemsLeft {
                             color: $dark-grayish-blue;
+                            font-weight: 400;
                             font-size: 14px;
-                            font-weight: 700;
-                            background-color: rgba(0, 0, 0, 0);
-                            border-style: none;
-                            &:hover {
-                                cursor: pointer;
+                        }
+
+                        .filter {
+                            button.text {
+                                padding: 0 4px;
+                                color: $dark-grayish-blue;
+                                font-size: 14px;
+                                font-weight: 700;
+                                background-color: rgba(0, 0, 0, 0);
+                                border-style: none;
+
+                                &:hover {
+                                    cursor: pointer;
+                                }
+                            }
+
+                            button.on {
+                                color: $bright-blue;
                             }
                         }
-                        button.on {
-                            color: $bright-blue;
+
+                        .clearCompleted {
+                            button.text {
+                                color: $dark-grayish-blue;
+                                font-size: 14px;
+                                background-color: rgba(0, 0, 0, 0);
+                                border-style: none;
+
+                                &:hover {
+                                    cursor: pointer;
+                                }
+                            }
+
+                            button.on {
+                                color: $bright-blue;
+                            }
+
+
                         }
                     }
 
-                    .clearCompleted {
-                        button.text {
-                            color: $dark-grayish-blue;
-                            font-size: 14px;
-                            background-color: rgba(0, 0, 0, 0);
-                            border-style: none;
-                            &:hover {
-                                cursor: pointer;
-                            }
-                        }
-                        button.on {
-                            color: $bright-blue;
-                        }
-
-                        
-                    }
                 }
+            }
+
+
+            .instruction {
+                padding-top: 64px;
+                text-align: center;
+                font-size: 12px;
+                font-weight: 700;
+                color: $dark-grayish-blue;
 
             }
+
+
         }
 
-
-        .instruction {
-            padding-top: 64px;
+        .attribution {
+            font-size: 12px;
             text-align: center;
-            font-size: 12px;
-            font-weight: 700;
-            color: $dark-grayish-blue;
-            
-        }
 
-
-    }
-
-    .attribution {
-        font-size: 12px;
-        text-align: center;
-
-        a {
-            font-size: 12px;
-            color: hsl(228, 45%, 44%);
+            a {
+                font-size: 12px;
+                color: hsl(228, 45%, 44%);
+            }
         }
     }
 }

@@ -36,7 +36,6 @@ const renderTasksLeftTodo = () => {
 }
 
 const finishedTask = (index) => {
-    console.log('finished ' + todoListArr[index]);
     todoListArr[index].isActive = false;
     filterToDoList(activeFilter);
 }
@@ -47,8 +46,6 @@ const unfinishedTask = (index) => {
 }
 
 const renderToDoList = (type) => {
-
-    console.log('rendering');
     let todoListHTML = "";
 
     todoListArr.forEach((task, index) => {
@@ -119,14 +116,51 @@ const handleClickClearCompleted = () => {
     })
 }
 
+const handleInputField = () => {
+    let newTaskActive = true
+    buttonNewTaskEl.addEventListener('click', () => {
+        newTaskActive = !newTaskActive;
+        newTaskActive==false ? buttonNewTaskEl.classList.add('on') :  buttonNewTaskEl.classList.remove('on');
+        buttonNewTaskEl.innerHTML = `<div class="icon-check"></div>`;
+    })
+
+    inputNewTaskEl.addEventListener('keypress', (event) => {
+        if(event.key==='Enter'){
+            const newTask = {isActive:newTaskActive, description: inputNewTaskEl.value};
+            todoListArr.push(newTask);
+            filterToDoList(activeFilter);
+            inputNewTaskEl.value = "";
+        }
+    })
+}
+
+const handleColorSchemeSwitch = () => {
+    colorSchemeEl.addEventListener('click', () => {
+        console.log('clicked');
+        if(colorSchemeEl.classList.contains('night')){
+            colorSchemeEl.classList.remove('night');
+            colorSchemeEl.classList.add('day');
+        }else{
+            colorSchemeEl.classList.remove('day');
+            colorSchemeEl.classList.add('night');
+        }
+    })
+}
+
+const colorSchemeEl = document.querySelector('.color-scheme');
 const todoListEl = document.querySelector('.todo');
 const filterAllEl = document.querySelector('.all');
 const filterActiveEl = document.querySelector('.active');
 const filterCompletedEl = document.querySelector('.completed');
 const clearCompletedEl = document.querySelector('.clear');
+const buttonNewTaskEl = document.querySelector('.newtask');
+const inputNewTaskEl = document.querySelector('.description');
 
 let activeFilter = 'All';
 
+
+handleInputField();
+handleColorSchemeSwitch();
 handleClickFilterAll();
 handleClickFilterActive();
 handleClickFilterCompleted();

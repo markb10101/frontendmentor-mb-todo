@@ -2,6 +2,7 @@
 * {
   margin: 0;
   padding: 0;
+  border: none;
   box-sizing: border-box;
   font-family: "Josefin Sans", sans-serif;
   font-size: 18px;
@@ -12,44 +13,53 @@ button:focus {
 }
 
 body {
+  max-width: 1440px;
+  height: 100%;
+}
+body .pageContainer {
+  border: 1px solid #3a7bfd;
   background-image: url("./images/bg-desktop-light.jpg");
   background-position: center top;
   background-repeat: no-repeat;
   background-color: #fff;
-  max-width: 1440px;
 }
-body .pageContainer {
+body .pageContainer .todoContainer {
   width: 540px;
   margin: 80px auto;
   display: flex;
   flex-direction: column;
 }
-body .pageContainer header {
+body .pageContainer .todoContainer header {
   display: flex;
   justify-content: space-between;
 }
-body .pageContainer header h1 {
+body .pageContainer .todoContainer header h1 {
   font-size: 40px;
   color: #fafafa;
 }
-body .pageContainer header button.icon-mode {
-  background-image: url("./images/icon-moon.svg");
+body .pageContainer .todoContainer header button:hover {
+  cursor: pointer;
+}
+body .pageContainer .todoContainer header button.color-scheme {
   width: 26px;
   height: 26px;
   background-color: rgba(0, 0, 0, 0);
   color: #fafafa;
   border: none;
 }
-body .pageContainer header button.icon-mode:hover {
-  cursor: pointer;
+body .pageContainer .todoContainer header button.night {
+  background-image: url("./images/icon-moon.svg");
 }
-body .pageContainer .todoContainer {
+body .pageContainer .todoContainer header button.day {
+  background-image: url("./images/icon-sun.svg");
+}
+body .pageContainer .todoContainer .todoContainer {
   margin-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-body .pageContainer .todoContainer header {
+body .pageContainer .todoContainer .todoContainer header {
   display: flex;
   justify-content: left;
   background-color: #fafafa;
@@ -57,7 +67,7 @@ body .pageContainer .todoContainer header {
   border-radius: 5px;
   margin-bottom: 24px;
 }
-body .pageContainer .todoContainer header button.check {
+body .pageContainer .todoContainer .todoContainer header button.check {
   background-position: center center;
   background-repeat: no-repeat;
   background-color: rgba(0, 0, 0, 0);
@@ -67,52 +77,11 @@ body .pageContainer .todoContainer header button.check {
   border-radius: 50%;
   margin: 20px 24px;
 }
-body .pageContainer .todoContainer header input {
-  background-color: #fafafa;
-  border-style: none;
-  color: #e4e5f1;
-}
-body .pageContainer .todoContainer header input:focus {
-  outline: none;
-  border-style: none;
-  color: #777a92;
-}
-body .pageContainer .todoContainer main {
-  box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-}
-body .pageContainer .todoContainer main ul {
-  border-radius: 5px;
-  background-color: #fafafa;
-}
-body .pageContainer .todoContainer main ul li {
-  height: 64px;
-  border-bottom: 1.5px solid #e4e5f1;
-  list-style: none;
-  position: relative;
-}
-body .pageContainer .todoContainer main ul li button.check {
-  width: 24px;
-  height: 24px;
-  border: 1px solid #e4e5f1;
-  background-color: rgba(0, 0, 0, 0);
-  border-radius: 50%;
-  margin: 20px 24px;
-}
-body .pageContainer .todoContainer main ul li button.check:hover {
-  cursor: pointer;
-}
-body .pageContainer .todoContainer main ul li .listText {
-  position: absolute;
-  top: 24px;
-  color: #393a4c;
-  font-weight: 400;
-}
-body .pageContainer .todoContainer main ul li.complete button.on {
+body .pageContainer .todoContainer .todoContainer header button.on {
   position: relative;
   background: linear-gradient(#57ddff, #c058f3);
 }
-body .pageContainer .todoContainer main ul li.complete button.on .icon-check {
+body .pageContainer .todoContainer .todoContainer header button.on .icon-check {
   position: absolute;
   top: -1px;
   width: 24px;
@@ -121,14 +90,68 @@ body .pageContainer .todoContainer main ul li.complete button.on .icon-check {
   background-position: center center;
   background-repeat: no-repeat;
 }
-body .pageContainer .todoContainer main ul li.complete button.on:hover {
+body .pageContainer .todoContainer .todoContainer header input {
+  background-color: #fafafa;
+  border-style: none;
+  color: #e4e5f1;
+}
+body .pageContainer .todoContainer .todoContainer header input:focus {
+  outline: none;
+  border-style: none;
+  color: #777a92;
+}
+body .pageContainer .todoContainer .todoContainer main {
+  box-shadow: 0px 4px 80px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+body .pageContainer .todoContainer .todoContainer main ul {
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+body .pageContainer .todoContainer .todoContainer main ul li {
+  height: 64px;
+  border-bottom: 1.5px solid #e4e5f1;
+  list-style: none;
+  position: relative;
+}
+body .pageContainer .todoContainer .todoContainer main ul li button.check {
+  width: 24px;
+  height: 24px;
+  border: 1px solid #e4e5f1;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 50%;
+  margin: 20px 24px;
+}
+body .pageContainer .todoContainer .todoContainer main ul li button.check:hover {
   cursor: pointer;
 }
-body .pageContainer .todoContainer main ul li.complete .listText {
+body .pageContainer .todoContainer .todoContainer main ul li .listText {
+  position: absolute;
+  top: 24px;
+  color: #393a4c;
+  font-weight: 400;
+}
+body .pageContainer .todoContainer .todoContainer main ul li.complete button.on {
+  position: relative;
+  background: linear-gradient(#57ddff, #c058f3);
+}
+body .pageContainer .todoContainer .todoContainer main ul li.complete button.on .icon-check {
+  position: absolute;
+  top: -1px;
+  width: 24px;
+  height: 24px;
+  background-image: url("./images/icon-check.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+body .pageContainer .todoContainer .todoContainer main ul li.complete button.on:hover {
+  cursor: pointer;
+}
+body .pageContainer .todoContainer .todoContainer main ul li.complete .listText {
   text-decoration: line-through;
   color: #e4e5f1;
 }
-body .pageContainer .todoContainer main footer {
+body .pageContainer .todoContainer .todoContainer main footer {
   height: 50px;
   background-color: #fafafa;
   display: flex;
@@ -137,12 +160,12 @@ body .pageContainer .todoContainer main footer {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-body .pageContainer .todoContainer main footer .itemsLeft {
+body .pageContainer .todoContainer .todoContainer main footer .itemsLeft {
   color: #777a92;
   font-weight: 400;
   font-size: 14px;
 }
-body .pageContainer .todoContainer main footer .filter button.text {
+body .pageContainer .todoContainer .todoContainer main footer .filter button.text {
   padding: 0 4px;
   color: #777a92;
   font-size: 14px;
@@ -150,36 +173,36 @@ body .pageContainer .todoContainer main footer .filter button.text {
   background-color: rgba(0, 0, 0, 0);
   border-style: none;
 }
-body .pageContainer .todoContainer main footer .filter button.text:hover {
+body .pageContainer .todoContainer .todoContainer main footer .filter button.text:hover {
   cursor: pointer;
 }
-body .pageContainer .todoContainer main footer .filter button.on {
+body .pageContainer .todoContainer .todoContainer main footer .filter button.on {
   color: #3a7bfd;
 }
-body .pageContainer .todoContainer main footer .clearCompleted button.text {
+body .pageContainer .todoContainer .todoContainer main footer .clearCompleted button.text {
   color: #777a92;
   font-size: 14px;
   background-color: rgba(0, 0, 0, 0);
   border-style: none;
 }
-body .pageContainer .todoContainer main footer .clearCompleted button.text:hover {
+body .pageContainer .todoContainer .todoContainer main footer .clearCompleted button.text:hover {
   cursor: pointer;
 }
-body .pageContainer .todoContainer main footer .clearCompleted button.on {
+body .pageContainer .todoContainer .todoContainer main footer .clearCompleted button.on {
   color: #3a7bfd;
 }
-body .pageContainer .instruction {
+body .pageContainer .todoContainer .instruction {
   padding-top: 64px;
   text-align: center;
   font-size: 12px;
   font-weight: 700;
   color: #777a92;
 }
-body .attribution {
+body .pageContainer .attribution {
   font-size: 12px;
   text-align: center;
 }
-body .attribution a {
+body .pageContainer .attribution a {
   font-size: 12px;
   color: #3e52a3;
 }
