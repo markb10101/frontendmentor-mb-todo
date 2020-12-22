@@ -51,7 +51,7 @@ const renderToDoList = (type) => {
     todoListArr.forEach((task, index) => {
         if (task.isActive && (type == 'All' || type == 'Active')) {
             todoListHTML += `<li><button class="check" onclick="finishedTask(${index})"></button>
-                            <span class="listText" onclick="finishedTask(${index})">${task.description}</span></li>`;
+                            <span class="listText" onclick="finishedTask(${index})">${task.description}</span><div class="icon-cross"></div></li>`;
         } else {
             if (!task.isActive && (type == 'All' || type == 'Completed')) {
                 todoListHTML += `<li class="complete"><button class="check on" onclick="unfinishedTask(${index})">
@@ -142,10 +142,13 @@ handleClickAllTasksButton = () => {
 const handleColorSchemeSwitch = () => {
     colorSchemeEl.addEventListener('click', () => {
         colorSchemeEl.classList.toggle('dark');
+        pageContainerEl.classList.toggle('dark');
     })
 }
 
 const colorSchemeEl = document.querySelector('.color-scheme');
+const pageContainerEl = document.querySelector('.pageContainer');
+// const inputContainerEl = document.querySelector('.inputContainer');
 const todoListEl = document.querySelector('.todo');
 const filterAllEl = document.querySelector('.all');
 const filterActiveEl = document.querySelector('.active');

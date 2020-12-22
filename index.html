@@ -11,37 +11,41 @@
 
 <body>
   <div class="pageContainer">
+    <div class="innerContainer">
 
-    <header>
-      <h1>T O D O</h1><button class="color-scheme"></button>
-    </header>
-    <div class="todoContainer">
       <header>
-        <button class="alltasks check"><div class="icon-check"></div></button>
-        <input class="description" placeholder="Create a new todo..."></input>
+        <h1>T O D O</h1><button class="color-scheme"></button>
       </header>
-      <main>
-        <ul class="todo"></ul>
-        <footer>
-          <div class="itemsLeft"></div>
-          <div class="filter">
-            <button class="text all on">All</button>
-            <button class="text active">Active</button>
-            <button class="text completed">Completed</button>
-          </div>
-          <div class="clearCompleted">
-            <button class="text clear">Clear Completed</button>
-          </div>
-        </footer>
-      </main>
+      <div class="todoContainer">
+        <header class="inputContainer">
+          <button class="alltasks check">
+            <div class="icon-check"></div>
+          </button>
+          <input class="description" placeholder="Create a new todo..."></input>
+        </header>
+        <main>
+          <ul class="todo"></ul>
+          <footer>
+            <div class="itemsLeft"></div>
+            <div class="filter">
+              <button class="text all on">All</button>
+              <button class="text active">Active</button>
+              <button class="text completed">Completed</button>
+            </div>
+            <div class="clearCompleted">
+              <button class="text clear">Clear Completed</button>
+            </div>
+          </footer>
+        </main>
+      </div>
+      <span class="instruction">Drag and drop to reorder list</span>
     </div>
-    <span class="instruction">Drag and drop to reorder list</span>
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="markbirchall.net">markb10101</a>.
+    </div>
+    <script type="text/javascript" src="todo.js" />
   </div>
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="markbirchall.net">markb10101</a>.
-  </div>
-  <script type="text/javascript" src="todo.js" />
 </body>
 
 </html>
