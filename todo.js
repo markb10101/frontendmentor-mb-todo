@@ -51,12 +51,12 @@ const renderToDoList = (type) => {
     todoListArr.forEach((task, index) => {
         if (task.isActive && (type == 'All' || type == 'Active')) {
             todoListHTML += `<li><button class="check" onclick="finishedTask(${index})"></button>
-                            <span class="listText">${task.description}</span></li>`;
+                            <span class="listText" onclick="finishedTask(${index})">${task.description}</span></li>`;
         } else {
             if (!task.isActive && (type == 'All' || type == 'Completed')) {
                 todoListHTML += `<li class="complete"><button class="check on" onclick="unfinishedTask(${index})">
                              <div class="icon-check"></div></button>
-                             <span class="listText">${task.description}</span></li>`;
+                             <span class="listText" onclick="unfinishedTask(${index})">${task.description}</span></li>`;
             }
         }
     });
@@ -117,33 +117,31 @@ const handleClickClearCompleted = () => {
 }
 
 const handleInputField = () => {
-    let newTaskActive = true
-    buttonNewTaskEl.addEventListener('click', () => {
-        newTaskActive = !newTaskActive;
-        newTaskActive==false ? buttonNewTaskEl.classList.add('on') :  buttonNewTaskEl.classList.remove('on');
-        buttonNewTaskEl.innerHTML = `<div class="icon-check"></div>`;
-    })
-
     inputNewTaskEl.addEventListener('keypress', (event) => {
         if(event.key==='Enter'){
-            const newTask = {isActive:newTaskActive, description: inputNewTaskEl.value};
-            todoListArr.push(newTask);
+            const newTask = {isActive:true, description: inputNewTaskEl.value};
+            todoListArr.unshift(newTask);
             filterToDoList(activeFilter);
             inputNewTaskEl.value = "";
         }
     })
 }
 
+handleClickAllTasksButton = () => {
+    allTasksButtonEl.addEventListener('click', () => {
+        allTasksButtonEl.classList.toggle('on') ;
+        if(allTasksButtonEl.classList.contains('on')){
+            todoListArr.map(item => item.isActive = false);
+        }else{
+            todoListArr.map(item => item.isActive = true);
+        }
+        filterToDoList(activeFilter);
+    })
+}
+
 const handleColorSchemeSwitch = () => {
     colorSchemeEl.addEventListener('click', () => {
-        console.log('clicked');
-        if(colorSchemeEl.classList.contains('night')){
-            colorSchemeEl.classList.remove('night');
-            colorSchemeEl.classList.add('day');
-        }else{
-            colorSchemeEl.classList.remove('day');
-            colorSchemeEl.classList.add('night');
-        }
+        colorSchemeEl.classList.toggle('dark');
     })
 }
 
@@ -153,8 +151,8 @@ const filterAllEl = document.querySelector('.all');
 const filterActiveEl = document.querySelector('.active');
 const filterCompletedEl = document.querySelector('.completed');
 const clearCompletedEl = document.querySelector('.clear');
-const buttonNewTaskEl = document.querySelector('.newtask');
 const inputNewTaskEl = document.querySelector('.description');
+const allTasksButtonEl = document.querySelector('.alltasks');
 
 let activeFilter = 'All';
 
@@ -164,8 +162,8 @@ handleColorSchemeSwitch();
 handleClickFilterAll();
 handleClickFilterActive();
 handleClickFilterCompleted();
-
 handleClickClearCompleted();
+handleClickAllTasksButton();
 
 filterToDoList(activeFilter);
 
