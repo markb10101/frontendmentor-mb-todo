@@ -105,6 +105,9 @@ body .pageContainer .innerContainer .todoContainer main ul li {
   list-style: none;
   position: relative;
 }
+body .pageContainer .innerContainer .todoContainer main ul li:hover .icon-cross {
+  opacity: 0.75;
+}
 body .pageContainer .innerContainer .todoContainer main ul li button.check {
   width: 24px;
   height: 24px;
@@ -127,9 +130,6 @@ body .pageContainer .innerContainer .todoContainer main ul li .listText:hover {
   cursor: pointer;
   color: #9394a5;
 }
-body .pageContainer .innerContainer .todoContainer main ul li .listText:hover + .icon-cross {
-  opacity: 0.75;
-}
 body .pageContainer .innerContainer .todoContainer main ul li .icon-cross {
   position: absolute;
   right: 20px;
@@ -140,6 +140,10 @@ body .pageContainer .innerContainer .todoContainer main ul li .icon-cross {
   background-position: center center;
   background-repeat: no-repeat;
   opacity: 0;
+}
+body .pageContainer .innerContainer .todoContainer main ul li .icon-cross:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 body .pageContainer .innerContainer .todoContainer main ul li.complete button.on {
   position: relative;

@@ -45,18 +45,23 @@ const unfinishedTask = (index) => {
     filterToDoList(activeFilter);
 }
 
+const removeTask = (index) => {
+    todoListArr.splice(index,1);
+    filterToDoList(activeFilter);
+}
+
 const renderToDoList = (type) => {
     let todoListHTML = "";
 
     todoListArr.forEach((task, index) => {
         if (task.isActive && (type == 'All' || type == 'Active')) {
             todoListHTML += `<li><button class="check" onclick="finishedTask(${index})"></button>
-                            <span class="listText" onclick="finishedTask(${index})">${task.description}</span><div class="icon-cross"></div></li>`;
+                            <span class="listText" onclick="finishedTask(${index})">${task.description}</span><div class="icon-cross" onclick="removeTask(${index})"></div></li>`;
         } else {
             if (!task.isActive && (type == 'All' || type == 'Completed')) {
                 todoListHTML += `<li class="complete"><button class="check on" onclick="unfinishedTask(${index})">
                              <div class="icon-check"></div></button>
-                             <span class="listText" onclick="unfinishedTask(${index})">${task.description}</span></li>`;
+                             <span class="listText" onclick="unfinishedTask(${index})">${task.description}</span><div class="icon-cross" onclick="removeTask(${index})"></div></li>`;
             }
         }
     });

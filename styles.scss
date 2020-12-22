@@ -156,6 +156,10 @@ body {
                             list-style: none;
                             position: relative;
 
+                            &:hover .icon-cross{
+                                opacity: 0.75;
+                            }
+
                             button.check {
                                 width: 24px;
                                 height: 24px;
@@ -168,6 +172,8 @@ body {
                                     cursor: pointer;
                                     border: 1px solid $dark-grayish-blue;
                                 }
+
+                                
                             }
 
                             .listText {
@@ -179,10 +185,6 @@ body {
                                 &:hover {
                                     cursor: pointer;
                                     color: $dark-grayish-blue;
-                                }
-
-                                &:hover + .icon-cross {
-                                    opacity: 0.75;
                                 }
                             }
 
@@ -196,6 +198,11 @@ body {
                                 background-position: center center;
                                 background-repeat: no-repeat;
                                 opacity: 0;
+
+                                &:hover {
+                                    cursor: pointer;
+                                    opacity: 1;
+                                }
                             }
 
                         }
