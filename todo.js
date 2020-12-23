@@ -1,4 +1,7 @@
-// setup an array for storing the todo tasks
+// frontend mentor: todo list App
+// m.birchall dec 2020
+
+
 let todoListArr = [
     {
         isActive: false,
@@ -26,13 +29,11 @@ let todoListArr = [
     },
 ];
 
-const todo = {
+const global = {
     indexOfTaskBeingDragged: 0,
     indexOfTaskDraggedOver: 0
 };
 
-
-// render notice for how many tasks are left to do
 const renderTasksLeftTodo = () => {
     const numOfTasksLeft = [...todoListArr.filter((task) => task.isActive === true)].length;
     const itemsLeftEl = document.querySelector('.itemsLeft');
@@ -72,7 +73,6 @@ const renderToDoList = (type) => {
     todoListEl.innerHTML = todoListHTML;
     renderTasksLeftTodo();
 }
-
 
 const filterToDoList = (type) => {
 
@@ -168,19 +168,19 @@ const setupDraggableItems = () => {
             const activeItem = document.querySelector('.dragging');
             todoListArr.forEach((task,index) => {
                 if(task.description==item.innerText){
-                    todo.indexOfTaskDraggedOver = index;
+                    global.indexOfTaskDraggedOver = index;
                 }
             })
             todoListArr.forEach((task,index) => {
                 if(task.description==activeItem.innerText){
-                    todo.indexOfTaskBeingDragged = index;
+                    global.indexOfTaskBeingDragged = index;
                 }
             })
         })
         item.addEventListener('dragend', () => {
-            const taskBeingDragged = todoListArr[todo.indexOfTaskBeingDragged];
-            todoListArr.splice(todo.indexOfTaskBeingDragged,1);
-            todoListArr.splice(todo.indexOfTaskDraggedOver,0,taskBeingDragged);
+            const taskBeingDragged = todoListArr[global.indexOfTaskBeingDragged];
+            todoListArr.splice(global.indexOfTaskBeingDragged,1);
+            todoListArr.splice(global.indexOfTaskDraggedOver,0,taskBeingDragged);
             filterToDoList(activeFilter);       
         })
     })
