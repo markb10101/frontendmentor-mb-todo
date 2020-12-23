@@ -24,7 +24,7 @@ $very-dark-grayish-blue-night: hsl(237, 14%, 26%);
     margin: 0;
     padding: 0;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 18px;
+
 }
 
 button {
@@ -33,21 +33,26 @@ button {
     }
 }
 
+
+
+// desktop styles
 body {
     .pageContainer {
+
         max-width: 1440px;
         height: 100%;
         background-image: url("./images/bg-desktop-light.jpg");
         background-position: center top;
         background-repeat: no-repeat;
         background-color: $very-light-gray;
-  
+
         .innerContainer {
             width: 540px;
             padding-top: 80px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
+            font-size: 18px;
 
             header {
                 display: flex;
@@ -71,6 +76,7 @@ body {
                     color: $very-light-gray;
                     border: none;
                     background-image: url("./images/icon-moon.svg");
+                    background-size: 100%;
                 }
             }
 
@@ -119,6 +125,7 @@ body {
                         background-color: $very-light-gray;
                         border-style: none;
                         color: $light-grayish-blue-day;
+                        font-size: 18px;
 
                         &:focus {
                             outline: none;
@@ -142,7 +149,7 @@ body {
                             list-style: none;
                             position: relative;
 
-                            &:hover .icon-cross{
+                            &:hover .icon-cross {
                                 opacity: 0.75;
                             }
 
@@ -157,7 +164,7 @@ body {
                                 &:hover {
                                     cursor: pointer;
                                     border: 1px solid $dark-grayish-blue;
-                                }                              
+                                }
                             }
 
                             .listText {
@@ -181,6 +188,7 @@ body {
                                 background-image: url("./images/icon-cross.svg");
                                 background-position: center center;
                                 background-repeat: no-repeat;
+                                background-size: 75%;
                                 opacity: 0;
 
                                 &:hover {
@@ -189,6 +197,7 @@ body {
                                 }
                             }
                         }
+
                         li.covered {
                             background-color: $light-grayish-blue-day;
                         }
@@ -303,6 +312,7 @@ body {
         }
     }
 
+    // colour settings for dark mode
     .pageContainer.dark {
         background-image: url("./images/bg-desktop-dark.jpg");
         background-position: center top;
@@ -315,6 +325,7 @@ body {
                     background-image: url("./images/icon-sun.svg");
                 }
             }
+
             .todoContainer {
                 header {
                     button.check {
@@ -378,10 +389,10 @@ body {
                         background-color: $very-dark-desaturated-blue;
 
                         .filter {
-                            button.text {                              
-                                color: $dark-grayish-blue;                               
+                            button.text {
+                                color: $dark-grayish-blue;
 
-                                &:hover {                                
+                                &:hover {
                                     color: $light-grayish-blue-night-hover;
                                 }
                             }
@@ -395,10 +406,11 @@ body {
                                 }
                             }
                         }
+
                         .clearCompleted {
                             button.text {
                                 color: $very-dark-grayish-blue-night-other;
-                                
+
                                 &:hover {
                                     cursor: pointer;
                                     color: $light-grayish-blue-night;
@@ -412,8 +424,160 @@ body {
 
         .attribution {
             color: $dark-grayish-blue-night;
+
             a {
                 color: hsl(228, 45%, 44%);
+            }
+        }
+    }
+}
+
+// mobile styles
+@media only screen and (max-width: 375px) {
+
+    body {
+        .pageContainer {
+            max-width: 375px;
+            background-position: top top;
+
+            .innerContainer {
+                width: 320px;
+                padding-top: 48px;
+                font-size: 12px;
+
+                header {
+                    h1 {
+                        font-size: 28px;
+                    }
+
+                    button.color-scheme {
+
+                        width: 20px;
+                        height: 20px;
+
+                    }
+                }
+
+                .todoContainer {
+                    margin-top: 32px;
+
+                    header.inputContainer {
+                        height: 52px;
+                        margin-bottom: 16px;
+
+                        button.check {
+                            width: 20px;
+                            height: 20px;
+                            margin: 16px 14px 14px 18px;
+                        }
+
+                        button.on {
+                            .icon-check {
+                                top: 0px;
+                                width: 18px;
+                                height: 18px;
+                            }
+                        }
+
+                        input {
+                            font-size: 12px;
+                        }
+
+                    }
+
+                    main {
+
+                        ul {
+                            li {
+                                height: 52px;
+
+                                button.check {
+                                    width: 20px;
+                                    height: 20px;
+                                    margin: 16px 14px 14px 18px;
+                                }
+
+                                .listText {
+                                    top: 20px;
+                                }
+
+                                .icon-cross {
+                                    opacity: 0.75;
+                                    width: 16px;
+                                    height: 16px;
+                                    right: 16px;
+                                    top: 16px;
+                                }
+                            }
+
+                            li.complete {
+                                button.on {
+                                    .icon-check {
+                                        top: -3px;
+                                        right: -3px;
+                                    }
+                                }
+                            }
+                        }
+
+                        footer {
+                            position: relative;
+
+                            .itemsLeft {
+                                font-size: 12px;
+                            }
+
+                            .filter {
+                                display: flex;
+                                justify-content: center;
+                                position: absolute;
+                                width: 320px;
+                                top: 68px;
+                                left: 0;
+                                border-radius: 5px;
+                                background-color: $very-light-gray;
+
+                                button.text {
+                                    padding: 16px 10px;
+                                }
+                            }
+
+                            .clearCompleted {
+
+                                button.text {
+                                    font-size: 12px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .instruction {
+                    padding-top: 90px;
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .pageContainer.dark {
+            .innerContainer {
+                .todoContainer {
+                    main {
+                        footer {
+                            .itemsLeft {
+                                color: $very-dark-grayish-blue;
+                            }
+
+                            .filter {
+                                background-color: $very-dark-desaturated-blue;
+
+                                button.text {
+                                    color: $very-dark-grayish-blue;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   font-family: "Josefin Sans", sans-serif;
-  font-size: 18px;
 }
 
 button:focus {
@@ -24,6 +23,7 @@ body .pageContainer .innerContainer {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  font-size: 18px;
 }
 body .pageContainer .innerContainer header {
   display: flex;
@@ -43,6 +43,7 @@ body .pageContainer .innerContainer header button.color-scheme {
   color: #fafafa;
   border: none;
   background-image: url("./images/icon-moon.svg");
+  background-size: 100%;
 }
 body .pageContainer .innerContainer .todoContainer {
   margin-top: 40px;
@@ -85,6 +86,7 @@ body .pageContainer .innerContainer .todoContainer header.inputContainer input {
   background-color: #fafafa;
   border-style: none;
   color: #d2d3db;
+  font-size: 18px;
 }
 body .pageContainer .innerContainer .todoContainer header.inputContainer input:focus {
   outline: none;
@@ -139,6 +141,7 @@ body .pageContainer .innerContainer .todoContainer main ul li .icon-cross {
   background-image: url("./images/icon-cross.svg");
   background-position: center center;
   background-repeat: no-repeat;
+  background-size: 75%;
   opacity: 0;
 }
 body .pageContainer .innerContainer .todoContainer main ul li .icon-cross:hover {
@@ -307,4 +310,100 @@ body .pageContainer.dark .attribution {
 }
 body .pageContainer.dark .attribution a {
   color: #3e52a3;
+}
+
+@media only screen and (max-width: 375px) {
+  body .pageContainer {
+    max-width: 375px;
+    background-position: top top;
+  }
+  body .pageContainer .innerContainer {
+    width: 320px;
+    padding-top: 48px;
+    font-size: 12px;
+  }
+  body .pageContainer .innerContainer header h1 {
+    font-size: 28px;
+  }
+  body .pageContainer .innerContainer header button.color-scheme {
+    width: 20px;
+    height: 20px;
+  }
+  body .pageContainer .innerContainer .todoContainer {
+    margin-top: 32px;
+  }
+  body .pageContainer .innerContainer .todoContainer header.inputContainer {
+    height: 52px;
+    margin-bottom: 16px;
+  }
+  body .pageContainer .innerContainer .todoContainer header.inputContainer button.check {
+    width: 20px;
+    height: 20px;
+    margin: 16px 14px 14px 18px;
+  }
+  body .pageContainer .innerContainer .todoContainer header.inputContainer button.on .icon-check {
+    top: 0px;
+    width: 18px;
+    height: 18px;
+  }
+  body .pageContainer .innerContainer .todoContainer header.inputContainer input {
+    font-size: 12px;
+  }
+  body .pageContainer .innerContainer .todoContainer main ul li {
+    height: 52px;
+  }
+  body .pageContainer .innerContainer .todoContainer main ul li button.check {
+    width: 20px;
+    height: 20px;
+    margin: 16px 14px 14px 18px;
+  }
+  body .pageContainer .innerContainer .todoContainer main ul li .listText {
+    top: 20px;
+  }
+  body .pageContainer .innerContainer .todoContainer main ul li .icon-cross {
+    opacity: 0.75;
+    width: 16px;
+    height: 16px;
+    right: 16px;
+    top: 16px;
+  }
+  body .pageContainer .innerContainer .todoContainer main ul li.complete button.on .icon-check {
+    top: -3px;
+    right: -3px;
+  }
+  body .pageContainer .innerContainer .todoContainer main footer {
+    position: relative;
+  }
+  body .pageContainer .innerContainer .todoContainer main footer .itemsLeft {
+    font-size: 12px;
+  }
+  body .pageContainer .innerContainer .todoContainer main footer .filter {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 320px;
+    top: 68px;
+    left: 0;
+    border-radius: 5px;
+    background-color: #fafafa;
+  }
+  body .pageContainer .innerContainer .todoContainer main footer .filter button.text {
+    padding: 16px 10px;
+  }
+  body .pageContainer .innerContainer .todoContainer main footer .clearCompleted button.text {
+    font-size: 12px;
+  }
+  body .pageContainer .innerContainer .instruction {
+    padding-top: 90px;
+    font-size: 12px;
+  }
+  body .pageContainer.dark .innerContainer .todoContainer main footer .itemsLeft {
+    color: #484b6a;
+  }
+  body .pageContainer.dark .innerContainer .todoContainer main footer .filter {
+    background-color: #25273c;
+  }
+  body .pageContainer.dark .innerContainer .todoContainer main footer .filter button.text {
+    color: #484b6a;
+  }
 }
