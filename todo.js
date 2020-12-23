@@ -39,12 +39,12 @@ const renderTasksLeftTodo = () => {
     itemsLeftEl.innerHTML = `${numOfTasksLeft} items left`;
 }
 
-const finishedTask = (index) => {
+const finishTask = (index) => {
     todoListArr[index].isActive = false;
     filterToDoList(activeFilter);
 }
 
-const unfinishedTask = (index) => {
+const unfinishTask = (index) => {
     todoListArr[index].isActive = true;
     filterToDoList(activeFilter);
 }
@@ -59,13 +59,13 @@ const renderToDoList = (type) => {
 
     todoListArr.forEach((task, index) => {
         if (task.isActive && (type == 'All' || type == 'Active')) {
-            todoListHTML += `<li class="draggable" draggable="true"><button class="check" onclick="finishedTask(${index})"></button>
-                            <span class="listText" onclick="finishedTask(${index})">${task.description}</span><div class="icon-cross" onclick="removeTask(${index})"></div></li>`;
+            todoListHTML += `<li class="draggable" draggable="true"><button class="check" onclick="finishTask(${index})"></button>
+                            <span class="listText" onclick="finishTask(${index})">${task.description}</span><div class="icon-cross" onclick="removeTask(${index})"></div></li>`;
         } else {
             if (!task.isActive && (type == 'All' || type == 'Completed')) {
-                todoListHTML += `<li class="draggable complete" draggable="true"><button class="check on" onclick="unfinishedTask(${index})">
+                todoListHTML += `<li class="draggable complete" draggable="true"><button class="check on" onclick="unfinishTask(${index})">
                              <div class="icon-check"></div></button>
-                             <span class="listText" onclick="unfinishedTask(${index})">${task.description}</span><div class="icon-cross" onclick="removeTask(${index})"></div></li>`;
+                             <span class="listText" onclick="unfinishTask(${index})">${task.description}</span><div class="icon-cross" onclick="removeTask(${index})"></div></li>`;
             }
         }
     });
@@ -94,31 +94,31 @@ const filterToDoList = (type) => {
             break;
     }
     renderToDoList(type);
-    handleDraggableItems();
+    setupDraggableItems();
 }
 
-const handleClickFilterAll = () => {
+const setupClickFilterAll = () => {
     filterAllEl.addEventListener('click', () => {
         activeFilter = 'All';
         filterToDoList(activeFilter);
     });
 }
 
-const handleClickFilterActive = () => {
+const setupClickFilterActive = () => {
     filterActiveEl.addEventListener('click', () => {
         activeFilter = 'Active';
         filterToDoList(activeFilter);
     });
 }
 
-const handleClickFilterCompleted = () => {
+const setupClickFilterCompleted = () => {
     filterCompletedEl.addEventListener('click', () => {
         activeFilter = 'Completed';
         filterToDoList(activeFilter);
     });
 }
 
-const handleClickClearCompleted = () => {
+const setupClickClearCompleted = () => {
     clearCompletedEl.addEventListener('click', () => {
         const cleanedListArr = [...todoListArr].filter((task) => task.isActive);
         todoListArr = cleanedListArr;
@@ -126,7 +126,7 @@ const handleClickClearCompleted = () => {
     })
 }
 
-const handleInputField = () => {
+const setupInputField = () => {
     inputNewTaskEl.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             const newTask = { isActive: true, description: inputNewTaskEl.value };
@@ -137,7 +137,7 @@ const handleInputField = () => {
     })
 }
 
-handleClickAllTasksButton = () => {
+setupClickAllTasksButton = () => {
     allTasksButtonEl.addEventListener('click', () => {
         allTasksButtonEl.classList.toggle('on');
         if (allTasksButtonEl.classList.contains('on')) {
@@ -149,14 +149,14 @@ handleClickAllTasksButton = () => {
     })
 }
 
-const handleColorSchemeSwitch = () => {
+const setupColorSchemeSwitch = () => {
     colorSchemeEl.addEventListener('click', () => {
         colorSchemeEl.classList.toggle('dark');
         pageContainerEl.classList.toggle('dark');
     })
 }
 
-const handleDraggableItems = () => {
+const setupDraggableItems = () => {
     const listItemsArr = document.querySelectorAll('.draggable');
     listItemsArr.forEach((item) => {
         item.addEventListener('dragstart', () => {
@@ -188,7 +188,6 @@ const handleDraggableItems = () => {
 
 const colorSchemeEl = document.querySelector('.color-scheme');
 const pageContainerEl = document.querySelector('.pageContainer');
-
 const todoListEl = document.querySelector('.todo');
 const filterAllEl = document.querySelector('.all');
 const filterActiveEl = document.querySelector('.active');
@@ -199,13 +198,13 @@ const allTasksButtonEl = document.querySelector('.alltasks');
 
 let activeFilter = 'All';
 
-handleInputField();
-handleColorSchemeSwitch();
-handleClickFilterAll();
-handleClickFilterActive();
-handleClickFilterCompleted();
-handleClickClearCompleted();
-handleClickAllTasksButton();
+setupInputField();
+setupColorSchemeSwitch();
+setupClickFilterAll();
+setupClickFilterActive();
+setupClickFilterCompleted();
+setupClickClearCompleted();
+setupClickAllTasksButton();
 
 filterToDoList(activeFilter);
 
