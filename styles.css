@@ -76,6 +76,7 @@ body .pageContainer .innerContainer .todoContainer header.inputContainer button.
 body .pageContainer .innerContainer .todoContainer header.inputContainer button.on .icon-check {
   position: absolute;
   top: -1px;
+  left: 0;
   width: 24px;
   height: 24px;
   background-image: url("./images/icon-check.svg");
@@ -158,6 +159,7 @@ body .pageContainer .innerContainer .todoContainer main ul li.complete button.on
 body .pageContainer .innerContainer .todoContainer main ul li.complete button.on .icon-check {
   position: absolute;
   top: -1px;
+  left: 0;
   width: 24px;
   height: 24px;
   background-image: url("./images/icon-check.svg");
@@ -343,6 +345,7 @@ body .pageContainer.dark .attribution a {
   }
   body .pageContainer .innerContainer .todoContainer header.inputContainer button.on .icon-check {
     top: 0px;
+    left: 0;
     width: 18px;
     height: 18px;
   }
@@ -368,8 +371,10 @@ body .pageContainer.dark .attribution a {
     top: 16px;
   }
   body .pageContainer .innerContainer .todoContainer main ul li.complete button.on .icon-check {
-    top: -3px;
-    right: -3px;
+    top: 0px;
+    left: 0;
+    width: 18px;
+    height: 18px;
   }
   body .pageContainer .innerContainer .todoContainer main footer {
     position: relative;

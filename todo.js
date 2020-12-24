@@ -65,7 +65,7 @@ const renderToDoList = (type) => {
         } else {
             if (!task.isActive && (type == 'All' || type == 'Completed')) {
                 todoListHTML += `<li class="draggable complete" draggable="true"><button name="Unfinish Task" class="check on" onclick="unfinishTask(${index})">
-                             <div class="icon-check"></div></button>
+                             <span class="icon-check"></span></button>
                              <span class="listText" onclick="unfinishTask(${index})">${task.description}</span><div class="icon-cross" onclick="removeTask(${index})"></div></li>`;
             }
         }
