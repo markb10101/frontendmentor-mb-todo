@@ -60,11 +60,11 @@ const renderToDoList = (type) => {
 
     todoListArr.forEach((task, index) => {
         if (task.isActive && (type == 'All' || type == 'Active')) {
-            todoListHTML += `<li class="draggable" draggable="true"><button class="check" onclick="finishTask(${index})"></button>
+            todoListHTML += `<li class="draggable" draggable="true"><button name="Finish Task" class="check" onclick="finishTask(${index})"></button>
                             <span class="listText" onclick="finishTask(${index})">${task.description}</span><div class="icon-cross" onclick="removeTask(${index})"></div></li>`;
         } else {
             if (!task.isActive && (type == 'All' || type == 'Completed')) {
-                todoListHTML += `<li class="draggable complete" draggable="true"><button class="check on" onclick="unfinishTask(${index})">
+                todoListHTML += `<li class="draggable complete" draggable="true"><button name="Unfinish Task" class="check on" onclick="unfinishTask(${index})">
                              <div class="icon-check"></div></button>
                              <span class="listText" onclick="unfinishTask(${index})">${task.description}</span><div class="icon-cross" onclick="removeTask(${index})"></div></li>`;
             }
