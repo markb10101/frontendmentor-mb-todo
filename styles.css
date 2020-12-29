@@ -20,6 +20,7 @@ body .pageContainer {
 body .pageContainer .innerContainer {
   max-width: 540px;
   padding-top: 80px;
+  padding: 80px 5% 0 5%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -190,6 +191,9 @@ body .pageContainer .innerContainer .todoContainer main footer .itemsLeft {
   color: #9394a5;
   font-weight: 400;
   font-size: 14px;
+}
+body .pageContainer .innerContainer .todoContainer main footer .filter {
+  white-space: nowrap;
 }
 body .pageContainer .innerContainer .todoContainer main footer .filter button.text {
   padding: 0 3px;
