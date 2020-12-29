@@ -18,7 +18,7 @@ body .pageContainer {
   background-color: #fafafa;
 }
 body .pageContainer .innerContainer {
-  width: 540px;
+  max-width: 540px;
   padding-top: 80px;
   margin: 0 auto;
   display: flex;
@@ -86,8 +86,10 @@ body .pageContainer .innerContainer .todoContainer header.inputContainer button.
 body .pageContainer .innerContainer .todoContainer header.inputContainer input {
   background-color: #fafafa;
   border-style: none;
+  border: 1px solid black;
   color: #d2d3db;
   font-size: 18px;
+  width: 80%;
 }
 body .pageContainer .innerContainer .todoContainer header.inputContainer input:focus {
   outline: none;
