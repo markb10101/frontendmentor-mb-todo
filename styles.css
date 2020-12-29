@@ -86,7 +86,6 @@ body .pageContainer .innerContainer .todoContainer header.inputContainer button.
 body .pageContainer .innerContainer .todoContainer header.inputContainer input {
   background-color: #fafafa;
   border-style: none;
-  border: 1px solid black;
   color: #d2d3db;
   font-size: 18px;
   width: 80%;
@@ -193,7 +192,7 @@ body .pageContainer .innerContainer .todoContainer main footer .itemsLeft {
   font-size: 14px;
 }
 body .pageContainer .innerContainer .todoContainer main footer .filter button.text {
-  padding: 0 4px;
+  padding: 0 3px;
   color: #9394a5;
   font-size: 14px;
   font-weight: 700;
@@ -316,7 +315,7 @@ body .pageContainer.dark .attribution a {
   color: #3e52a3;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 376px) {
   body .pageContainer {
     max-width: 375px;
     background-position: top top;
